@@ -4,25 +4,42 @@ using UnityEngine;
 
 public class PlayerBehavior : MonoBehaviour
 {
-    public GameObject playerObject;
-    public GameObject[] railPoints;
+    public float playerXValue;
+    //public Animator animator;
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        //railPoints = GameObject.FindGameObjectsWithTag("RailPoints");
+        playerXValue = GetComponent<Transform>().position.x;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        playerObject.transform.position = 
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && playerXValue > -6)
         {
-            
+            GetComponent<Transform>().position = new Vector2(playerXValue -= 3f, 0);
+            //animator.SetTrigger("Left");
+            //animator.ResetTrigger("Idle");
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.D) && playerXValue < 6)
+        {
+            GetComponent<Transform>().position = new Vector2(playerXValue += 3f, 0);
+            //animator.SetTrigger("Right");
+            //animator.ResetTrigger("Idle");
+        }
+
+        if(Input.GetKeyUp(KeyCode.A) && Input.GetKeyUp(KeyCode.D))
+        {
+            //animator.ResetTrigger("Right");
+            //animator.ResetTrigger("Left");
+            //animator.SetTrigger("Idle");
+        }
     }
 }
