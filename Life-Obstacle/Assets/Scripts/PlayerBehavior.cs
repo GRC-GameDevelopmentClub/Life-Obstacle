@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     public float playerXValue;
+
+    public float playerHealth;
+
     //public Animator animator;
     
     
@@ -41,5 +44,11 @@ public class PlayerBehavior : MonoBehaviour
             //animator.ResetTrigger("Left");
             //animator.SetTrigger("Idle");
         }
+
+        if(playerHealth <= 0)
+        {
+            Debug.Log("Game Over");
+        }
+
     }
 }
