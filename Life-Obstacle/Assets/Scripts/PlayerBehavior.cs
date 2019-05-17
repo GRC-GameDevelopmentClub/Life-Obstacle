@@ -27,23 +27,16 @@ public class PlayerBehavior : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) && playerXValue > -6)
         {
             GetComponent<Transform>().position = new Vector2(playerXValue -= 3f, 0);
-            //animator.SetTrigger("Left");
-            //animator.ResetTrigger("Idle");
+            
         }
 
         if (Input.GetKeyDown(KeyCode.D) && playerXValue < 6)
         {
             GetComponent<Transform>().position = new Vector2(playerXValue += 3f, 0);
-            //animator.SetTrigger("Right");
-            //animator.ResetTrigger("Idle");
+            
         }
 
-        if(Input.GetKeyUp(KeyCode.A) && Input.GetKeyUp(KeyCode.D))
-        {
-            //animator.ResetTrigger("Right");
-            //animator.ResetTrigger("Left");
-            //animator.SetTrigger("Idle");
-        }
+        
 
         if(playerHealth <= 0)
         {
