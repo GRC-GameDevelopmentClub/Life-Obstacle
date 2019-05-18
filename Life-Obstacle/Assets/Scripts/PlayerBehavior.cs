@@ -8,6 +8,8 @@ public class PlayerBehavior : MonoBehaviour
 
     public float playerHealth;
 
+    public Animator animator;
+
     //public Animator animator;
     
     
@@ -26,7 +28,12 @@ public class PlayerBehavior : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A) && playerXValue > -6)
         {
-            GetComponent<Transform>().position = new Vector2(playerXValue -= 3f, 0);
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("MoveLeft") &&
+                animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                GetComponent<Transform>().position = new Vector2(playerXValue -= 3f, 0);
+            }
+            
             
         }
 
